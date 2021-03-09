@@ -16,11 +16,8 @@ namespace DirectLineTokenGeneration
     {
         [FunctionName("TokenGenerationFunction")]
         public static async Task<Response> Generate(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
             Response response = await GenerateTokenAsync();
 
             return response;
@@ -28,11 +25,8 @@ namespace DirectLineTokenGeneration
 
         [FunctionName("TokenRefreshFunction")]
         public static async Task<Response> Refresh(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
             string token = req.Query["token"];
             string requestBody = String.Empty;
             using (StreamReader streamReader = new StreamReader(req.Body))
@@ -55,9 +49,12 @@ namespace DirectLineTokenGeneration
             {
                 user = new
                 {
-                    id = "",
-                    name = ""
+                    id = $"dl_{Guid.NewGuid()}"
                 },
+                //trustedOrigins = new object[]
+                //{
+                //    "INSERT_TRUSTED_DOMAINS"
+                //}
             };
             var requestJson = JsonConvert.SerializeObject(request);
             String URL_GENERATE_TOKEN = $"{Constants.URL_GENERATE_TOKEN}";
