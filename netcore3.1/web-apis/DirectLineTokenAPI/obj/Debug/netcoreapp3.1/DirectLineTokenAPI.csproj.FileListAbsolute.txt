@@ -19,3 +19,4 @@ C:\Users\Juan\Downloads\azure samples\csharp-portfolio\netcore3.1\web-apis\Direc
 C:\Users\Juan\Downloads\azure samples\csharp-portfolio\netcore3.1\web-apis\DirectLineTokenAPI\obj\Debug\netcoreapp3.1\DirectLineTokenAPI.dll
 C:\Users\Juan\Downloads\azure samples\csharp-portfolio\netcore3.1\web-apis\DirectLineTokenAPI\obj\Debug\netcoreapp3.1\DirectLineTokenAPI.pdb
 C:\Users\Juan\Downloads\azure samples\csharp-portfolio\netcore3.1\web-apis\DirectLineTokenAPI\obj\Debug\netcoreapp3.1\DirectLineTokenAPI.genruntimeconfig.cache
+C:\Users\Juan\Downloads\azure samples\csharp-portfolio\netcore3.1\web-apis\DirectLineTokenAPI\obj\Debug\netcoreapp3.1\DirectLineTokenAPI.csprojAssemblyReference.cache
