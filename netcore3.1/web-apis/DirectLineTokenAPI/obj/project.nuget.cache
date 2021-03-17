@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8CTCBZy0PCwod+3z2YpxeBkJYDwSZATaWdf/CfAF0tBXw1pUUGVHhkzb86EWZTA5aXYkNIxP7VQLcbNXcxaK+w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Juan\\Downloads\\azure samples\\csharp-portfolio\\netcore3.1\\web-apis\\DirectLineTokenAPI\\DirectLineTokenAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Juan\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
