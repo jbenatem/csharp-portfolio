@@ -10,13 +10,12 @@ using Newtonsoft.Json.Linq;
 
 namespace DirectLineTokenAPI.Controllers
 {
-    [Route("api/token/generate")]
+    [Route("api/token")]
     [ApiController]
     public class TokenController : ControllerBase
     {
-        // POST api/<TokenController>
-        [HttpPost]
-        public async Task<Response> GenerateTokenController()
+        [HttpPost("generate")]
+        public async Task<Response> GenerateToken()
         {
             string HTMLResult;
             JObject response;
@@ -39,6 +38,30 @@ namespace DirectLineTokenAPI.Controllers
             try
             {
                 HTMLResult = await wc.UploadStringTaskAsync(URL_GENERATE_TOKEN, requestJson);
+                response = JObject.Parse(HTMLResult);
+                Response rsp = JsonConvert.DeserializeObject<Response>(response.ToString());
+                return rsp;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpPost("refresh")]
+        public async Task<Response> Refresh(string token)
+        {
+            string HTMLResult;
+            JObject response;
+            var request = new { };
+            var requestJson = JsonConvert.SerializeObject(request);
+            String URL_REFRESH_TOKEN = $"{Constants.URL_REFRESH_TOKEN}";
+            WebClient wc = new WebClient();
+            wc.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {token}");
+            wc.Headers.Add(HttpRequestHeader.ContentType, Constants.APPLICATION_JSON);
+            try
+            {
+                HTMLResult = await wc.UploadStringTaskAsync(URL_REFRESH_TOKEN, requestJson);
                 response = JObject.Parse(HTMLResult);
                 Response rsp = JsonConvert.DeserializeObject<Response>(response.ToString());
                 return rsp;
