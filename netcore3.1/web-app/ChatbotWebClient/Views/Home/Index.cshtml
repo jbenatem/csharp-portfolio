@@ -1,0 +1,60 @@
+﻿<div class="chatbot">
+    <div class="chatbutton" id="chatbutton" onclick="OpenChat()">
+        <img class="imagebutton" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Circle-icons-chat.svg/1024px-Circle-icons-chat.svg.png" alt="chatbutton"></img>
+    </div>
+    <div class="chatbox" id="chatbox">
+        <div class="chatheader">
+            <div class="chatheader-text">
+                <p class="header-title">Webchat Demo</p>
+            </div>
+            <div class="chatheader-hidebutton" onclick="CloseChat()">
+                <p class="close-button">X</p>
+            </div>
+        </div>
+        <div class="chatbody" id="chatbody" role="main">
+        </div>
+    </div>
+</div>
+<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+<script>
+    var firstInteraction = false;
+
+    function CloseChat() {
+        document.getElementById("chatbox").style.display = "none";
+        document.getElementById("chatbutton").style.display = "flex";
+    }
+
+    function OpenChat() {
+        document.getElementById("chatbutton").style.display = "none";
+        document.getElementById("chatbox").style.display = "block";
+
+        if (!firstInteraction) {
+            const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
+                if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+                    dispatch({
+                        type: 'WEB_CHAT/SEND_EVENT',
+                        payload: {
+                            name: 'webchat/join',
+                            value: {
+                                language: window.navigator.language
+                            }
+                        }
+                    });
+                }
+                return next(action);
+            });
+
+            window.WebChat.renderWebChat(
+                {
+                    directLine: window.WebChat.createDirectLine({
+                        token: '@ViewData["DirectLineToken"]'
+                    }),
+                    store,
+                },
+                document.getElementById('chatbody')
+            );
+
+            firstInteraction = true;
+        }
+    }
+</script>

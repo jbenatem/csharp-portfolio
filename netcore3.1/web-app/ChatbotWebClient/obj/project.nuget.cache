@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cxOrOmtVG2J9Q8Aw9iigWZO9I1rQqFPCXmPP6Z2ObUMxeeOhQy/vAcWrPPXSYgWMAWIzsBXvVgMWPzDVspiD3g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Juan\\Downloads\\azure samples\\csharp-portfolio\\netcore3.1\\web-app\\ChatbotWebClient\\ChatbotWebClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Juan\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
